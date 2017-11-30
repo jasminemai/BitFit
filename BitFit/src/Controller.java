@@ -13,21 +13,19 @@ public class Controller {
 	Scene activity;
 	Parent root;
 	String text;
-	@FXML 
-	private Button rightMainButton;
-	@FXML 
-	private Button leftMainButton;
+	public static int stepNum;
+	public static int heartRate = 75;
 	@FXML
 	private Button activityLeft;
-	@FXML
-	private Button sleepRight;
 	@FXML
 	private Label stepField;
 	@FXML
 	private Label heartField;
 	@FXML
-	private Label sleepField;
-	
+	private Button incrementStepButton;
+	@FXML
+	private Button incrementHeartRateButton;
+	HeartRateSensor hr = new HeartRateSensor();
 	@FXML
 	private void goToMain(ActionEvent event){
 		if (event.getSource()==activityLeft)
@@ -47,9 +45,27 @@ public class Controller {
 	}
     @FXML
     private void initialize() {
-        stepField.setText("100");
-        heartField.setText("65");
+        stepField.setText(Integer.toString(stepNum));
+        
+        heartField.setText(Integer.toString(heartRate));
     }
     
+	@FXML
+	private void incrementStep(ActionEvent event){
+		if (event.getSource()==incrementStepButton)
+		{
+			stepNum++;
+			stepField.setText(Integer.toString(stepNum));
+		}
+	}
+	
+	@FXML
+	private void incrementHeartRate(ActionEvent event){
+		if (event.getSource()==incrementHeartRateButton)
+		{
+			heartField.setText(Integer.toString(hr.getRate(heartRate)));
+			heartRate = hr.getRate(heartRate);
+		}
+	}
 
 }

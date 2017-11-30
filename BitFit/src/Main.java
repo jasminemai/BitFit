@@ -31,18 +31,9 @@ public class Main extends Application{
 	@FXML 
 	private Button leftMainButton;
 	@FXML
-	private Button activityLeft;
-	@FXML
-	private Button sleepRight;
-	@FXML
 	private Button syncButton;
 	@FXML
-	private Label stepField;
-	@FXML
 	private Label dateField;
-	Thread t = null;
-	int hours = 0, minutes = 0, seconds = 0;
-	String timeString = "";
 	@FXML
 	private Label timeField;
 	@FXML
@@ -101,7 +92,14 @@ public class Main extends Application{
 	private void syncNow(ActionEvent event){
 		if (event.getSource()== syncButton)
 		{	
-			System.out.println("hi");
+			try {
+				Sync sync = new Sync();
+				sync.demandSync(Controller.stepNum, Controller.heartRate, Sleep.totalTime);
+				System.out.println("Synced!");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 
@@ -128,6 +126,15 @@ public class Main extends Application{
 
 
 	public void handle(WindowEvent event) {
+		
+		try {
+			Sync sync = new Sync();
+			sync.demandSync(Controller.stepNum, Controller.heartRate, Sleep.totalTime);
+			System.out.println("Synced!");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Platform.exit();
 		System.exit(0);
 	}

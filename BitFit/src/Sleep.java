@@ -17,16 +17,9 @@ public class Sleep {
 	String text;
 	long beginSleepTime;
 	String beginSleep;
-	@FXML 
-	private Button rightMainButton;
-	@FXML 
-	private Button leftMainButton;
-	@FXML
-	private Button activityLeft;
+	public static String totalTime;
 	@FXML
 	private Button sleepRight;
-	@FXML
-	private Label stepField;
 	@FXML 
 	private Label sleepField;
 	@FXML 
@@ -36,6 +29,7 @@ public class Sleep {
 	@FXML
 	private Button endSleepButton;
 	SleepTracker st = new SleepTracker();
+	
 	@FXML
 	private void goToMain2(ActionEvent event){
 		if (event.getSource()==sleepRight)
@@ -67,7 +61,7 @@ public class Sleep {
 		{
 			long total = 0;
 			total = st.endSleep(beginSleep);
-			String totalTime = st.getSleepTime(total);
+			totalTime = st.getSleepTime(total);
 			totalSleepField.setText("Total:\n" + totalTime);
 			//sleepField.setText(Integer.toString(total));
 		}

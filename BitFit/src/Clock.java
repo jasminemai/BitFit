@@ -7,16 +7,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class Clock {
-	public String printTime() 
+	public String getTime() 
 	{
-		String timeStamp = new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
-		return timeStamp;
+		String time = new SimpleDateFormat("HH:mm").format(new Date());
+		return time;
 	}
-
-	public String printDate()
+	public String getTimeStamp()
 	{
-		String date = new SimpleDateFormat("MM-dd-yyyy").format(Calendar.getInstance());
-		return date;
-		
+		String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+		return timeStamp;
 	}
 }

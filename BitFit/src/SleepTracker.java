@@ -8,6 +8,7 @@ public class SleepTracker {
 	String endSleepTime;
 	long totalSleepTime;
 	String sleepTime;
+	Clock currTime = new Clock();
 
 	//returns total sleeping time in format hh:mm:ss
 	String getSleepTime(long totalSleepTime) {
@@ -19,27 +20,15 @@ public class SleepTracker {
 		return sleep;
 	}
 
-	//converts hours, minutes, seconds so that they consist of two digits
-	private String sleepString (int time){
-		String sleepTime;
-		if (time < 10){
-			sleepTime = "0"+time;
-		} 
-		else {
-			sleepTime = ""+time; 
-		}
-		return sleepTime;
-	}
-
 	//saves time user starts sleeping, called by button
 	String makeNewSleep(){
-		beginSleepTime = new SimpleDateFormat("HH:mm").format(new Date());
+		beginSleepTime = currTime.getTime();
 		return beginSleepTime;
 	} 
 
 	//saves time user stops sleeping, called by button
 	long endSleep (String begin){
-		endSleepTime = new SimpleDateFormat("HH:mm").format(new Date());
+		endSleepTime = currTime.getTime();
 		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 		try {
 			Date d1 = sdf.parse(begin);
@@ -52,13 +41,4 @@ public class SleepTracker {
 		}
 		return totalSleepTime;
 	}
-	/*public static void main(String[] args) {
-		String sleep = String.format("%d min, %d sec", 
-			    TimeUnit.MILLISECONDS.toMinutes(100000000),
-			    TimeUnit.MILLISECONDS.toSeconds(100000000) - 
-			    TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(100000000))
-			);
-		System.out.println(sleep);
-	    
-	}*/
 }

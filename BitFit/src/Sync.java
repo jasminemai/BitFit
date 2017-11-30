@@ -3,16 +3,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Sync {
-	public void writer(String x, String y){
-		FileWriter fw;
-		try {
-			fw = new FileWriter("Data.txt", true);
-			BufferedWriter bw = new BufferedWriter(fw);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+	public static void demandSync(int stepNum, int heartRate, String totalTime) throws IOException {
+		Clock timeStamp = new Clock();
+		BufferedWriter writer = new BufferedWriter(new FileWriter("Data.txt", true));
+		writer.newLine();
+		writer.append(timeStamp.getTimeStamp() + "Steps: " + stepNum + " HeartRate: " + heartRate + " Sleep: " + totalTime);
+		writer.close();
 	}
 
 }
