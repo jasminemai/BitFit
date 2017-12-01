@@ -1,3 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Title:            SleepTracker.java
+// Purpose:			Gets the beginning and ending of the sleeping duration and returns the amount slept.
+// Semester:         Fall 2017
+//
+// Author:           Anna Uhl
+// Class:			CSCI 360: Software Architecture & Design
+//
+/////////////////////////////////////////////////////////////////////////////
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,7 +20,7 @@ public class SleepTracker {
 	String sleepTime;
 	Clock currTime = new Clock();
 
-	//returns total sleeping time in format hh:mm:ss
+	//returns total sleeping time in format hh:mm as a string
 	String getSleepTime(long totalSleepTime) {
 		String sleep = String.format("%d hr(s), %d min(s)", 
 			    TimeUnit.MILLISECONDS.toHours(totalSleepTime),

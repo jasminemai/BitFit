@@ -1,1 +1,4 @@
 FitBit Data
+2017/11/30 12:31:09Steps: 14 HeartRate: 74 Sleep: 1 hr(s), 22 min(s)
+2017/11/30 14:03:44Steps: 16 HeartRate: 74 Sleep: 0 hr(s), 0 min(s)
+2017/11/30 14:04:15Steps: 30 HeartRate: 74 Sleep: 0 hr(s), 0 min(s)

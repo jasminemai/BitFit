@@ -1,6 +1,14 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Title:            SleepUI.java
+// Purpose:			Initializes the Sleep UI
+// Semester:         Fall 2017
+//
+// Author:           Jasmine Mai
+// Class:			CSCI 360: Software Architecture & Design
+//
+/////////////////////////////////////////////////////////////////////////////
 import java.io.IOException;
-import java.util.Date;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-public class Sleep {
+//This is the controller class for the Sleep screen
+public class SleepUI {
 	Stage primaryStage;
 	Scene activity;
 	Parent root;
@@ -30,6 +39,7 @@ public class Sleep {
 	private Button endSleepButton;
 	SleepTracker st = new SleepTracker();
 	
+	//Returns to the main menu
 	@FXML
 	private void goToMain2(ActionEvent event){
 		if (event.getSource()==sleepRight)
@@ -46,6 +56,8 @@ public class Sleep {
 			primaryStage.show();
 		}
 	}
+	
+	//Launches the makeNewSleep method
 	@FXML
 	private void goToSleep(ActionEvent event){
 		if (event.getSource()==sleepButton)
@@ -55,6 +67,7 @@ public class Sleep {
 		}
 	}
 	
+	//Launches the endSleep method and displays the total sleep time
 	@FXML
 	void endSleep(ActionEvent event) {
 		if (event.getSource()==endSleepButton)

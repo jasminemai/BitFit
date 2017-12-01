@@ -1,3 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Title:            Main.java
+// Purpose:			Initializes the UI
+// Semester:         Fall 2017
+//
+// Author:           Jasmine Mai
+// Class:			CSCI 360: Software Architecture & Design
+//
+/////////////////////////////////////////////////////////////////////////////
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -39,6 +49,8 @@ public class Main extends Application{
 	@FXML
 	private Button clockUpdate;
 
+	
+	//Sets the main stage for the UI
 	@Override     
 	public void start(Stage primaryStage) throws Exception { 
 		try {
@@ -50,8 +62,9 @@ public class Main extends Application{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}    
-
+	}
+	
+	//Button to go to the activity screen
 	@FXML
 	private void goToActivity(ActionEvent event){
 		if (event.getSource()==rightMainButton)
@@ -70,6 +83,7 @@ public class Main extends Application{
 		}
 	}
 
+	//Button to go to the sleep screen
 	@FXML
 	private void goToSleep(ActionEvent event){
 		if (event.getSource()==leftMainButton)
@@ -88,13 +102,14 @@ public class Main extends Application{
 		}
 	}
 
+	//Button to launch the sync function
 	@FXML
 	private void syncNow(ActionEvent event){
 		if (event.getSource()== syncButton)
 		{	
 			try {
 				Sync sync = new Sync();
-				sync.demandSync(Controller.stepNum, Controller.heartRate, Sleep.totalTime);
+				sync.demandSync(ActivityUI.stepNum, ActivityUI.heartRate, SleepUI.totalTime);
 				System.out.println("Synced!");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -102,10 +117,11 @@ public class Main extends Application{
 			}
 		}
 	}
-
+	
+	//Initializing class to run the thread for the time and sets the date
 	@FXML
 	public void initialize() {
-		Timeline timeline = new Timeline(
+		Timeline currentTime = new Timeline(
 				new KeyFrame(Duration.seconds(0),
 						new EventHandler<ActionEvent>() {
 					@Override public void handle(ActionEvent actionEvent) {
@@ -117,28 +133,20 @@ public class Main extends Application{
 						),
 				new KeyFrame(Duration.seconds(1))
 				);
-		timeline.setCycleCount(Animation.INDEFINITE);
-		timeline.play();
+		currentTime.setCycleCount(Animation.INDEFINITE);
+		currentTime.play();
 		DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
 		Date date = new Date();
 		dateField.setText(dateFormat.format(date));
 	}
 
-
+	//Closes the Java window when the exit button is pressed
 	public void handle(WindowEvent event) {
-		
-		try {
-			Sync sync = new Sync();
-			sync.demandSync(Controller.stepNum, Controller.heartRate, Sleep.totalTime);
-			System.out.println("Synced!");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		Platform.exit();
 		System.exit(0);
 	}
 
+	//Launches the application
 	public static void main(String[] args) {
 		launch(args);
 	}

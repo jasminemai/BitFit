@@ -1,3 +1,13 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// Title:            ActivityUI.java
+// Purpose:			Initializes the Activity UI
+// Semester:         Fall 2017
+//
+// Author:           Jasmine Mai
+// Class:			CSCI 360: Software Architecture & Design
+//
+/////////////////////////////////////////////////////////////////////////////
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -8,7 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-public class Controller {
+public class ActivityUI {
 	Stage primaryStage;
 	Scene activity;
 	Parent root;
@@ -26,6 +36,8 @@ public class Controller {
 	@FXML
 	private Button incrementHeartRateButton;
 	HeartRateSensor hr = new HeartRateSensor();
+	
+	//Button to reach back to the main screen from the activity screen
 	@FXML
 	private void goToMain(ActionEvent event){
 		if (event.getSource()==activityLeft)
@@ -43,6 +55,8 @@ public class Controller {
 
 		}
 	}
+	
+	//Sets the labels to the appropriate value
     @FXML
     private void initialize() {
         stepField.setText(Integer.toString(stepNum));
@@ -50,6 +64,7 @@ public class Controller {
         heartField.setText(Integer.toString(heartRate));
     }
     
+    //Increments the step every time a button is pressed
 	@FXML
 	private void incrementStep(ActionEvent event){
 		if (event.getSource()==incrementStepButton)
@@ -59,6 +74,7 @@ public class Controller {
 		}
 	}
 	
+	//Increments the heart rate to a reasonable amount
 	@FXML
 	private void incrementHeartRate(ActionEvent event){
 		if (event.getSource()==incrementHeartRateButton)
