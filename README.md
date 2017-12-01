@@ -1,1 +1,6 @@
 # BitFit
+This is a FitBit software that is designed for the class CSCI 360: Software Architecture & Design, instructed by Dr. Xenia Mountrouidou. This is designed by Team 5 which consists of Jasmine Mai(me), [Lara Brooksbank](https://github.com/brooksbanklj), and Anna Uhl. Our software is called the BitFit because it's a more affordable and compact FitBit.
+## How to Install!
+Clone our repository and compile it from the Main.java file. There might be some formatting issues like with the font if ran from a non-Apple product because it uses Apple's font Helvetica Neue.
+## About the Code Itself
+Some buttons may take a while to respond because of a delay, I have no idea why that happens, I believe it is loading (the buttons are indeed very big and hard to miss). There are many features that we could improve, such as having the sync function operate at a current time and have it have the adapter design model to be applied in order for it to run on all operating systems smoothly. As well as being able to use multi-threading for our ActivityTracker.java function to work coincide with the UI. As of right now, the ActivityTracker.java is its own thing and runs on its own thread, but due to JavaFx's own threading system, I was not able to try to implement it in time with the UI.
